@@ -1,0 +1,13 @@
+Make sure to have python3.10, docker and venv installed
+create virtual environment
+install from requirements.txt
+run download.sh
+create a new folder inside hack named pdf_files
+create a .env file with your secret key
+run qdrant
+
+run below commands in terminal
+1. sudo docker pull qdrant/qdrant
+2. sudo docker run -p 6333:6333 -p 6334:6334 \
+    -v $(pwd)/qdrant_storage:/qdrant/storage:z \
+    qdrant/qdrant

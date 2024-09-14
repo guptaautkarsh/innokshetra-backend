@@ -1,0 +1,8 @@
+.venv/
+models/
+__pycache__
+.idea
+qdrant_storage/
+instance
+hack/pdf_files
+.env
