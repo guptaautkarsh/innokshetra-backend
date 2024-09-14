@@ -131,7 +131,6 @@ def insert_pdf_vectordb(_arr_docs):
 
 
 @app.route('/question', methods=['POST'])
-@jwt_required()
 def question():
     if request.is_json:
         data = request.get_json()
@@ -144,7 +143,6 @@ def question():
 
 
 @app.route('/selected', methods=['POST'])
-@jwt_required()
 def select_pdf():
     if request.is_json:
         data = request.get_json()
