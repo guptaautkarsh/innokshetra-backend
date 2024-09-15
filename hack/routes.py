@@ -129,6 +129,7 @@ def insert_pdf_vectordb(_arr_docs):
 
     insert_in_db(document_embeddings)
 
+token = "null"
 
 @app.route('/question', methods=['POST'])
 def question():
@@ -200,6 +201,8 @@ def login():
         if bcrypt.check_password_hash(user.password, pass_word):
             access_token = create_access_token(identity={'username': user.username,
                             'email': user.email, 'user_id': user.id})
+            global token
+            token = access_token
             return jsonify({"message": "Login successful",  "access_token": access_token})
         else:
             return jsonify({"error": "Invalid Password"})
@@ -283,12 +286,11 @@ def history():
 def logout():
     current_user = get_jwt_identity()
     user_name = current_user['username']
+    global token
+    token = "null"
     return jsonify({'message': '{} is logged out'.format(user_name)})
 
 
 @app.route('/account')
-@jwt_required()
 def account():
-    current_user = get_jwt_identity()
-    user_name = current_user['username']
-    return jsonify({"message" : "{} is currently logged in".format(user_name)})
+    return jsonify({"token" : token})
