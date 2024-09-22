@@ -181,7 +181,6 @@ def registration():
             db.session.add(user)
             db.session.commit()
 
-        print(user.query.all())
         return jsonify({'message' : 'Successfully Registered'})
 
     else:
